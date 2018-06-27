@@ -1,0 +1,14 @@
+version: '3'
+services:
+  cloudflocaddy:
+    container_name: cloudflocaddy
+    build:
+      args:
+        plugins: cloudflare
+      context: github.com/abiosoft/caddy-docker.git
+    ports:
+      - 127.0.0.1:80:80
+      - 127.0.0.1:443:443
+    restart: unless-stopped
+    volumes:
+      - ./Caddyfile:/etc/Caddyfile:ro
